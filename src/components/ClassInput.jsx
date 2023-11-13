@@ -18,6 +18,7 @@ class ClassInput extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEditMonitoring = this.handleEditMonitoring.bind(this);
   }
 
   handleInputChange(e) {
@@ -27,12 +28,11 @@ class ClassInput extends Component {
     }));
   }
 
-  handleEditChange(e) {
-    this.setState((state) => ({
-      ...state,
-      editVal: e.target.value,
-    }));
+  handleEditMonitoring(e) {
+    this.setState({ editVal: e.target.value });
   }
+
+
 
   handleSubmit(e) {
     e.preventDefault();
@@ -45,6 +45,7 @@ class ClassInput extends Component {
         return {
           todos: newTodos,
           inputVal: "",
+          editVal: "",
         };
       },
       () => {
@@ -58,20 +59,40 @@ class ClassInput extends Component {
     this.setState({ todos: updateTodoList });
   }
 
+
+
   calculateTodoCount = () => {
     this.setState({ todoCount: this.state.todos.length });
   };
 
   handleEdit(todo) {
-    const todoFromState = this.state.todos.map((item) => {
+    const updatedTodos = this.state.todos.map((item) => {
       if (item === todo) {
         if (item.edit) {
-          // Editing is true so this is for getting back from the edit mode
+          // Editing is true, update the item.description and set item.edit to false
+          return {
+            ...item,
+            description: this.state.editVal,
+            edit: false,
+          };
         } else {
+          // Item is not in edit mode, set edit to true and set editVal to item.description
+          return {
+            ...item,
+            edit: true,
+          };
         }
+      } else {
+        return item;
       }
     });
+  
+    this.setState({ todos: updatedTodos, editVal: todo.description }, () => {
+      this.calculateTodoCount();
+    });
   }
+  
+  
 
   render() {
     return (
@@ -92,7 +113,7 @@ class ClassInput extends Component {
         </form>
         <h4>All the tasks!</h4>
         <h5>Number of todos: {this.state.todoCount}</h5>
-        {/* The list of all the To-Do's, displayed */}
+        
         <ul>
           {this.state.todos.map((todo) => {
             let content;
@@ -102,7 +123,7 @@ class ClassInput extends Component {
                   type="text"
                   name="task-entry"
                   value={this.state.editVal}
-                  onChange={this.handleEditChange}
+                  onChange={this.handleEditMonitoring}
                 />
               );
             } else {

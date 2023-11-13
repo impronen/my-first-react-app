@@ -1,88 +1,67 @@
-.main-body {
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Titan+One&display=swap");
+
+body {
+  background: linear-gradient(to right, #444, #222);
+}
+
+#root,
+section {
   display: flex;
   flex-direction: column;
-  background-color: #11171d;
-  min-height: 80rem;
+  align-items: center;
 }
-.body {
-  display: flex;
-  flex-direction: column;
+
+section > * {
+  color: #eee;
 }
-.inner-body {
-  display: flex;
-  flex-direction: row;
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 1rem 0;
+  background-color: #111;
+  box-shadow: #444 0px 0.2rem 0.5rem;
 }
-.card-body {
-  display: flex;
-  flex-direction: column;
-  width: 566px;
-  height: 170px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  background-color: #15202a;
-  margin-left: 25rem;
-  margin-bottom: 0.1rem;
-}
-.card-body:hover {
-  background-color: #11171d;
-  border: #ffffff;
-}
-.picture {
-  margin-left: 24px;
-  margin-top: 17px;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-}
-.name {
-  display: flex;
-  flex-direction: row;
-  margin-left: 15px;
-  margin-top: 19px;
-  min-width: 85px;
-  height: 17px;
-  font-family: HelveticaNeue;
-  font-size: 14px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: -0.6px;
-  color: #ffffff;
-}
-.details {
-  margin-left: 15px;
-  margin-top: 7px;
-  width: 445px;
-  height: 88px;
-  font-family: HelveticaNeue;
-  font-size: 14px;
+
+h3 {
+  font-family: "Titan One", cursive;
   font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: -0.6px;
-  color: #ffffff;
 }
-.star {
-  cursor: pointer;
-  height: 25px;
-  width: 25px;
-  margin-left: 0px;
-  float: left;
-  background-color: grey;
-  clip-path: polygon(
-    50% 0%,
-    63% 38%,
-    100% 38%,
-    69% 59%,
-    82% 100%,
-    50% 75%,
-    18% 100%,
-    31% 59%,
-    0% 38%,
-    37% 38%
-  );
+
+form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Merriweather", serif;
 }
-.star.selected {
-  background-color: red;
+
+h4 {
+  width: 100%;
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: #111 1px solid;
+  text-align: center;
+  font-family: "Merriweather", serif;
+}
+
+ul {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.25rem;
+  border-bottom: #111 1px solid;
+}
+
+li {
+  width: 100%;
+  font-family: "Merriweather", serif;
+}
+
+button {
+  margin-left: 1rem;
+  padding: 0.35rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 0.25rem;
+  font-family: "Merriweather", serif;
 }
